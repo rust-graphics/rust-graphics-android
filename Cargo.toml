@@ -1,0 +1,20 @@
+[package]
+name = "rust_graphics_android"
+version = "0.1.0"
+authors = ["Hossein Noroozpour <hossein.noroozpour@gmail.com>"]
+description = "A simple, small and minimal android library binding"
+repository = "https://github.com/rust-graphics/rust-graphics-android"
+license = "MIT"
+readme = "README.md"
+keywords = ["ffi", "android", "glue", "binding"]
+
+[dependencies]
+bitflags = "1.2"
+libc = "0.2"
+
+rust_graphics_log = {version = "*", path = "../rust-graphics-log"}
+rust_graphics_jni = {version = "*", path = "../rust-graphics-jni"}
+
+[features]
+debug_derive = []
+verbose_log = []
