@@ -16,12 +16,13 @@ use crate::log_i;
 pub struct AndroidPollSource {
     pub id: i32,
     pub app: &'static mut AndroidApp,
-    pub process: extern "C" fn(app: &mut AndroidApp, source: &mut AndroidPollSource),
+    pub process: extern "C" fn(app: &mut AndroidApp, source: *mut AndroidPollSource),
 }
 
 #[repr(C)]
 pub struct AndroidApp {
-    pub on_app_cmd: extern "C" fn(app: &mut AndroidApp, cmd: i32),
+    pub user_data: *mut c_void,
+    pub on_app_cmd: extern "C" fn(app: &mut AndroidApp, cmd: AppCmd),
     pub on_input_event: extern "C" fn(app: &mut AndroidApp, event: *mut input::AInputEvent) -> i32,
     pub activity: &'static mut activity::ANativeActivity,
     pub config: &'static mut config::AConfiguration,
@@ -63,24 +64,23 @@ pub enum LooperId {
     User = 3,
 }
 
-#[repr(i8)]
+#[repr(i32)]
 #[cfg_attr(feature = "debug_derive", derive(Debug))]
 pub enum AppCmd {
-    InputChanged = 1,
-    InitWindow = 2,
-    TermWindow = 3,
-    WindowResized = 4,
-    WindowRedrawNeeded = 5,
-    ContentRectChanged = 6,
-    GainedFocus = 7,
-    LostFocus = 8,
-    ConfigChanged = 9,
-    LowMemory = 10,
-    Start = 11,
-    Resume = 12,
-    SaveState = 13,
-    Pause = 14,
-    Stop = 15,
-    Destroy = 16,
-    InternalError = -1,
+    InputChanged,
+    InitWindow,
+    TermWindow,
+    WindowResized,
+    WindowRedrawNeeded,
+    ContentRectChanged,
+    GainedFocus,
+    LostFocus,
+    ConfigChanged,
+    LowMemory,
+    Start,
+    Resume,
+    SaveState,
+    Pause,
+    Stop,
+    Destroy,
 }
