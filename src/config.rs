@@ -1,4 +1,4 @@
-#[cfg(feature = "debug_derive")]
+#[cfg(feature = "debug-derive")]
 use std::fmt::{Debug, Formatter, Result};
 use {super::asset::AAssetManager, std::os::raw::c_char};
 
@@ -157,7 +157,7 @@ extern "C" {
     ) -> i32;
 }
 
-#[cfg(feature = "debug_derive")]
+#[cfg(feature = "debug-derive")]
 impl Debug for AConfiguration {
     fn fmt(&self, f: &mut Formatter) -> Result {
         let mut lang = [0 as c_char; 2];

@@ -16,5 +16,5 @@ rust-graphics-log = {version = "*", path = "../rust-graphics-log"}
 rust-graphics-jni = {version = "*", path = "../rust-graphics-jni"}
 
 [features]
-debug_derive = []
-verbose_log = ["debug_derive"]
+debug-derive = []
+verbose-log = ["debug-derive"]

@@ -9,7 +9,7 @@ use {
     std::os::raw::{c_int, c_void},
 };
 
-#[cfg(feature = "verbose_log")]
+#[cfg(feature = "verbose-log")]
 use crate::log_i;
 
 #[repr(C)]
@@ -50,7 +50,7 @@ pub struct AndroidApp {
     pub pending_content_rect: rect::ARect,
 }
 
-#[cfg(feature = "verbose_log")]
+#[cfg(feature = "verbose-log")]
 impl Drop for AndroidApp {
     fn drop(&mut self) {
         log_i!("AndroidApp droped.");
@@ -65,7 +65,7 @@ pub enum LooperId {
 }
 
 #[repr(i32)]
-#[cfg_attr(feature = "debug_derive", derive(Debug))]
+#[cfg_attr(feature = "debug-derive", derive(Debug))]
 pub enum AppCmd {
     InputChanged,
     InitWindow,
