@@ -1,5 +1,5 @@
 [package]
-name = "rust_graphics_android"
+name = "rust-graphics-android"
 version = "0.1.0"
 authors = ["Hossein Noroozpour <hossein.noroozpour@gmail.com>"]
 description = "A simple, small and minimal android library binding"
@@ -13,8 +13,8 @@ bitflags = "1.2"
 libc = "0.2"
 
 rust-graphics-log = {version = "*", path = "../rust-graphics-log"}
-rust_graphics_jni = {version = "*", path = "../rust-graphics-jni"}
+rust-graphics-jni = {version = "*", path = "../rust-graphics-jni"}
 
 [features]
 debug_derive = []
-verbose_log = []
+verbose_log = ["debug_derive"]
